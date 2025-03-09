@@ -6,19 +6,20 @@
             {
                 "index": "APT1",
                 "name": "aptos mainnet",
-                "enabled": false,
+                "enabled": true,
                 "reliability_threshold": 268435455,
                 "data_reliability_enabled": true,
-                "block_distance_for_finalized_data": 200,
-                "blocks_in_finalization_proof": 10,
-                "average_block_time": 200,
-                "allowed_block_lag_for_qos_sync": 1000,
-                "block_last_updated": 0,
+                "block_distance_for_finalized_data": 0,
+                "blocks_in_finalization_proof": 5,
+                "average_block_time": "200",
+                "allowed_block_lag_for_qos_sync": "50",
+                "block_last_updated": "0",
+                "providers_types": "dynamic",
                 "min_stake_provider": {
                     "denom": "ulava",
-                    "amount": "15000000000"
+                    "amount": "47500000000"
                 },
-                "shares": 1,
+                "shares": "1",
                 "identity": "",
                 "api_collections": [
                     {
@@ -40,7 +41,7 @@
                                     "default_value": "",
                                     "encoding": ""
                                 },
-                                "compute_units": 10,
+                                "compute_units": "10",
                                 "enabled": true,
                                 "category": {
                                     "deterministic": false,
@@ -49,8 +50,8 @@
                                     "stateful": 0,
                                     "hanging_api": false
                                 },
-                                "extra_compute_units": 0,
-                                "timeout_ms": 0,
+                                "extra_compute_units": "0",
+                                "timeout_ms": "0",
                                 "parsers": []
                             },
                             {
@@ -446,9 +447,9 @@
                             {
                                 "name": "archive",
                                 "rule": {
-                                    "block": 427500
+                                    "block": "427500"
                                 },
-                                "cu_multiplier": 5
+                                "cu_multiplier": "5"
                             }
                         ],
                         "verifications": [
@@ -457,8 +458,8 @@
                                 "values": [
                                     {
                                         "extension": "",
-                                        "expected_value": 1,
-                                        "latest_distance": 0,
+                                        "expected_value": "1",
+                                        "latest_distance": "0",
                                         "severity": "Fail"
                                     }
                                 ]
@@ -468,13 +469,14 @@
                                 "values": [
                                     {
                                         "extension": "",
-                                        "latest_distance": 432000,
+                                        "expected_value": "",
+                                        "latest_distance": "432000",
                                         "severity": "Fail"
                                     },
                                     {
                                         "extension": "archive",
-                                        "expected_value": 0,
-                                        "latest_distance": 0,
+                                        "expected_value": "0",
+                                        "latest_distance": "0",
                                         "severity": "Fail"
                                     }
                                 ]
@@ -616,10 +618,11 @@
                 "data_reliability_enabled": true,
                 "block_distance_for_finalized_data": 5,
                 "blocks_in_finalization_proof": 5,
-                "average_block_time": 1000,
-                "allowed_block_lag_for_qos_sync": 50,
-                "block_last_updated": 0,
-                "shares": 1,
+                "average_block_time": "1000",
+                "allowed_block_lag_for_qos_sync": "50",
+                "block_last_updated": "0",
+                "providers_types": "dynamic",
+                "shares": "1",
                 "identity": "",
                 "min_stake_provider": {
                     "denom": "ulava",
@@ -667,7 +670,7 @@
                                 "name": "chain-id",
                                 "values": [
                                     {
-                                        "expected_value": 126
+                                        "expected_value": "4"
                                     }
                                 ]
                             },
@@ -675,11 +678,11 @@
                                 "name": "pruning",
                                 "values": [
                                     {
-                                        "latest_distance": 86400
+                                        "latest_distance": 2400
                                     },
                                     {
                                       "extension": "archive",
-                                      "expected_value": 0,
+                                      "expected_value": "0",
                                       "latest_distance": 0,
                                       "severity": "Fail"
                                     }
@@ -737,7 +740,7 @@
                                 "name": "chain-id",
                                 "values": [
                                     {
-                                        "expected_value": 250
+                                        "expected_value": "250"
                                     }
                                 ]
                             },
@@ -745,13 +748,13 @@
                                 "name": "pruning",
                                 "values": [
                                     {
-                                        "latest_distance": 86400,
+                                        "latest_distance": 2400,
                                         "expected_value": 0
 
                                     },
                                     {
                                       "extension": "archive",
-                                      "expected_value": 0,
+                                      "expected_value": "0",
                                       "latest_distance": 0,
                                       "severity": "Fail"
                                     }
@@ -778,3 +781,4 @@
     },
     "deposit": "1750000000ulava"
 }
+
