@@ -1,27 +1,23 @@
 {
     "proposal": {
-        "title": "Add Specs: Evmos",
-        "description": "Adding new specification support for relaying Evmos data on Lava",
+        "title": "Add Specs: Cosmos SDK v0.45",
+        "description": "Adding default Cosmos SDK v0.45 deprecated apis specification",
         "specs": [
             {
-                "index": "EVMOS",
-                "name": "evmos mainnet",
-                "enabled": true,
-                "imports": [
-                    "COSMOSSDK50",
-                    "ETHERMINT",
-                    "ETH1"
-                ],
+                "index": "COSMOSSDK45DEP",
+                "name": "cosmos sdk deprecated apis",
+                "enabled": false,
+                "imports": [],
                 "reliability_threshold": 268435455,
                 "data_reliability_enabled": true,
                 "block_distance_for_finalized_data": 0,
                 "blocks_in_finalization_proof": 1,
-                "average_block_time": 3900,
+                "average_block_time": 6500,
                 "allowed_block_lag_for_qos_sync": 2,
                 "shares": 1,
                 "min_stake_provider": {
                     "denom": "ulava",
-                    "amount": "5000000000"
+                    "amount": "47500000000"
                 },
                 "api_collections": [
                     {
@@ -34,7 +30,7 @@
                         },
                         "apis": [
                             {
-                                "name": "/evmos/epochs/v1/current_epoch",
+                                "name": "/blocks/latest",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -52,7 +48,7 @@
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/epochs/v1/epochs",
+                                "name": "/txs",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -62,15 +58,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/erc20/v1/params",
+                                "name": "/txs/{hash}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -80,15 +77,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/erc20/v1/token_pairs",
+                                "name": "/bank/balances/{address}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -98,15 +96,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/erc20/v1/token_pairs/{token}",
+                                "name": "/bank/total",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -116,15 +115,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/account/{address}",
+                                "name": "/bank/total/{denomination}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -134,15 +134,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/balances/{address}",
+                                "name": "/auth/accounts/{address}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -152,15 +153,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/base_fee",
+                                "name": "/staking/delegators/{delegatorAddr}/delegations",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -170,15 +172,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/codes/{address}",
+                                "name": "/staking/delegators/{delegatorAddr}/delegations/{validatorAddr}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -188,15 +191,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/cosmos_account/{address}",
+                                "name": "/staking/delegators/{delegatorAddr}/unbonding_delegations",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -206,15 +210,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/estimate_gas",
+                                "name": "/staking/delegators/{delegatorAddr}/unbonding_delegations/{validatorAddr}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -224,15 +229,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/eth_call",
+                                "name": "/staking/redelegations",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -242,15 +248,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/params",
+                                "name": "/staking/delegators/{delegatorAddr}/validators",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -260,15 +267,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/storage/{address}/{key}",
+                                "name": "/staking/delegators/{delegatorAddr}/validators/{validatorAddr}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -278,15 +286,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/trace_block",
+                                "name": "/staking/validators",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -296,15 +305,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/trace_tx",
+                                "name": "/staking/validators/{validatorAddr}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -314,15 +324,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/evm/v1/validator_account/{cons_address}",
+                                "name": "/staking/validators/{validatorAddr}/unbonding_delegations",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -332,15 +343,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/feemarket/v1/base_fee",
+                                "name": "/staking/pool",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -350,15 +362,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/feemarket/v1/block_gas",
+                                "name": "/staking/parameters",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -368,15 +381,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/feemarket/v1/params",
+                                "name": "/slashing/signing_infos",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -386,15 +400,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/circulating_supply",
+                                "name": "/slashing/parameters",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -404,15 +419,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/epoch_mint_provision",
+                                "name": "/minting/parameters",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -422,15 +438,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/inflation_rate",
+                                "name": "/minting/inflation",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -440,15 +457,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/params",
+                                "name": "/minting/annual-provisions",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -458,15 +476,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/period",
+                                "name": "/staking/validators/{validatorAddr}/delegations",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -476,15 +495,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/inflation/v1/skipped_epochs",
+                                "name": "/gov/proposals",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -494,15 +514,16 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             },
                             {
-                                "name": "/evmos/vesting/v2/balances/{address}",
+                                "name": "/gov/proposals/{proposalId}",
                                 "block_parsing": {
                                     "parser_arg": [
                                         "latest"
@@ -512,10 +533,334 @@
                                 "compute_units": 10,
                                 "enabled": true,
                                 "category": {
-                                    "deterministic": true,
+                                    "deterministic": false,
                                     "local": false,
                                     "subscription": false,
-                                    "stateful": 0
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/proposer",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/deposits",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/deposits/{depositor}",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/votes",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/votes/{voter}",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/tally",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/parameters/deposit",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/parameters/tallying",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/parameters/voting",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/rewards",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/rewards/{validatorAddr}",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/withdraw_address",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/validators/{validatorAddr}",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/validators/{validatorAddr}/outstanding_rewards",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/validators/{validatorAddr}/rewards",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/community_pool",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/parameters",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
                                 },
                                 "extra_compute_units": 0
                             }
@@ -523,604 +868,272 @@
                         "headers": [],
                         "inheritance_apis": [],
                         "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "minimum-gas-price",
-                                "values": [
-                                    {
-                                        "expected_value": "50000000000.000000000000000000aevmos",
-                                        "severity": "Warning"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9001-2"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "pruning",
-                                "values": [
-                                    {
-                                        "latest_distance": 22154
-                                    },
-                                    {
-                                        "extension": "archive",
-                                        "latest_distance": 1000000
-                                    }
-                                ]
-                            }
-                        ],
-                        "extensions": [
-                            {
-                                "name": "archive",
-                                "cu_multiplier": 5,
-                                "rule": {
-                                    "block": 21923
-                                }
-                            }
-                        ]
+                        "verifications": []
                     },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "grpc",
-                            "internal_path": "",
-                            "type": "",
-                            "add_on": ""
-                        },
-                        "apis": [
-                            {
-                                "name": "evmos.epochs.v1.Query/CurrentEpoch",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.epochs.v1.Query/EpochInfos",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.erc20.v1.Query/Params",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.erc20.v1.Query/TokenPair",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.erc20.v1.Query/TokenPairs",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/CirculatingSupply",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/EpochMintProvision",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/InflationRate",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/Params",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/Period",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.inflation.v1.Query/SkippedEpochs",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            },
-                            {
-                                "name": "evmos.vesting.v2.Query/Balances",
-                                "block_parsing": {
-                                    "parser_arg": [
-                                        "latest"
-                                    ],
-                                    "parser_func": "DEFAULT"
-                                },
-                                "compute_units": 10,
-                                "enabled": true,
-                                "category": {
-                                    "deterministic": true,
-                                    "local": false,
-                                    "subscription": false,
-                                    "stateful": 0
-                                },
-                                "extra_compute_units": 0
-                            }
-                        ],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "minimum-gas-price",
-                                "values": [
-                                    {
-                                        "expected_value": "50000000000.000000000000000000aevmos",
-                                        "severity": "Warning"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9001-2"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "pruning",
-                                "values": [
-                                    {
-                                        "latest_distance": 22154
-                                    },
-                                    {
-                                        "extension": "archive",
-                                        "latest_distance": 1000000
-                                    }
-                                ]
-                            }
-                        ],
-                        "extensions": [
-                            {
-                                "name": "archive",
-                                "cu_multiplier": 5,
-                                "rule": {
-                                    "block": 21923
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "tendermintrpc",
-                            "internal_path": "",
-                            "type": "",
-                            "add_on": ""
-                        },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9001-2"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "pruning",
-                                "values": [
-                                    {
-                                        "latest_distance": 22154
-                                    },
-                                    {
-                                        "extension": "archive",
-                                        "latest_distance": 1000000
-                                    }
-                                ]
-                            }
-                        ],
-                        "extensions": [
-                            {
-                                "name": "archive",
-                                "cu_multiplier": 5,
-                                "rule": {
-                                    "block": 21923
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "jsonrpc",
-                            "internal_path": "",
-                            "type": "POST",
-                            "add_on": ""
-                        },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "0x2329"
-                                    }
-                                ]
-                            },
-                            {
-                                "name": "pruning",
-                                "parse_directive": {
-                                    "function_tag": "GET_BLOCK_BY_NUM"
-                                },
-                                "values": [
-                                    {
-                                        "latest_distance": 22154
-                                    },
-                                    {
-                                        "extension": "archive",
-                                        "latest_distance": 1000000
-                                    }
-                                ]
-                            }
-                        ],
-                        "extensions": [
-                            {
-                                "name": "archive",
-                                "cu_multiplier": 5,
-                                "rule": {
-                                    "block": 21923
-                                }
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "jsonrpc",
-                            "internal_path": "",
-                            "type": "POST",
-                            "add_on": "debug"
-                        },
-                        "apis": [
-                            {
-                                "name": "debug_getBadBlocks",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_getRawBlock",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_getRawHeader",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_getRawReceipts",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_getRawTransaction",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_storageRangeAt",
-                                "compute_units": 1,
-                                "enabled": false
-                            },
-                            {
-                                "name": "debug_traceCall",
-                                "compute_units": 1,
-                                "enabled": false
-                            }
-                        ],
-                        "verifications": [
-                            {
-                                "name": "enabled",
-                                "parse_directive": {
-                                    "function_template": "{\"jsonrpc\":\"2.0\",\"method\":\"debug_traceBlockByNumber\",\"params\":[\"latest\", {\"tracer\": \"callTracer\"}],\"id\":1}",
-                                    "function_tag": "VERIFICATION",
-                                    "result_parsing": {
-                                        "parser_arg": [
-                                            "0"
-                                        ],
-                                        "parser_func": "PARSE_BY_ARG",
-                                        "encoding": "hex"
-                                    },
-                                    "api_name": "debug_traceBlockByNumber"
-                                },
-                                "values": [
-                                    {
-                                        "expected_value": "*"
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ],
-                "contributor": [
-                    "lava@18rtt3ka0jc85qvvcnct0t7ayq6fva7692k9kvh"
-                ],
-                "contributor_percentage": "0.03"
-            },
-            {
-                "index": "EVMOST",
-                "name": "evmos testnet",
-                "enabled": true,
-                "imports": [
-                    "EVMOS"
-                ],
-                "reliability_threshold": 268435455,
-                "data_reliability_enabled": true,
-                "block_distance_for_finalized_data": 0,
-                "blocks_in_finalization_proof": 1,
-                "average_block_time": 3150,
-                "allowed_block_lag_for_qos_sync": 2,
-                "shares": 1,
-                "min_stake_provider": {
-                    "denom": "ulava",
-                    "amount": "5000000000"
-                },
-                "api_collections": [
                     {
                         "enabled": true,
                         "collection_data": {
                             "api_interface": "rest",
                             "internal_path": "",
-                            "type": "GET",
-                            "add_on": ""
-                        },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9000-4"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "grpc",
-                            "internal_path": "",
-                            "type": "",
-                            "add_on": ""
-                        },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9000-4"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "tendermintrpc",
-                            "internal_path": "",
-                            "type": "",
-                            "add_on": ""
-                        },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
-                            {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "evmos_9000-4"
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        "enabled": true,
-                        "collection_data": {
-                            "api_interface": "jsonrpc",
-                            "internal_path": "",
                             "type": "POST",
                             "add_on": ""
                         },
-                        "apis": [],
-                        "headers": [],
-                        "inheritance_apis": [],
-                        "parse_directives": [],
-                        "verifications": [
+                        "apis": [
                             {
-                                "name": "chain-id",
-                                "values": [
-                                    {
-                                        "expected_value": "0x2328"
-                                    }
-                                ]
+                                "name": "/txs/encode",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 1,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
                             },
                             {
-                                "name": "pruning",
-                                "values": []
+                                "name": "/txs/decode",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 1,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/bank/accounts/{address}/transfers",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/slashing/validators/{validatorAddr}/unjail",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 1,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/staking/delegators/{delegatorAddr}/redelegations",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/param_change",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/deposits",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/gov/proposals/{proposalId}/votes",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/rewards",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/rewards/{validatorAddr}",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/delegators/{delegatorAddr}/withdraw_address",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
+                            },
+                            {
+                                "name": "/distribution/validators/{validatorAddr}/rewards",
+                                "block_parsing": {
+                                    "parser_arg": [
+                                        "latest"
+                                    ],
+                                    "parser_func": "DEFAULT"
+                                },
+                                "compute_units": 10,
+                                "enabled": true,
+                                "category": {
+                                    "deterministic": false,
+                                    "local": false,
+                                    "subscription": false,
+                                    "stateful": 0,
+                                    "hanging_api": true
+                                },
+                                "extra_compute_units": 0
                             }
-                        ]
+                        ],
+                        "headers": [],
+                        "inheritance_apis": [],
+                        "parse_directives": []
                     }
-                ],
-                "contributor": [
-                    "lava@18rtt3ka0jc85qvvcnct0t7ayq6fva7692k9kvh"
-                ],
-                "contributor_percentage": "0.03"
+                ]
             }
         ]
     },
-    "deposit": "7000000000ulava"
+    "deposit": "10000000ulava"
 }
